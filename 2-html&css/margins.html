@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<title>margins webpage</title>
+
+		*EX: margin:top pixels bottom pixels left pixels right pixels
+
+
+		<style type="text/css">
+
+			.red{
+				color:red;
+			
+			}
+
+			.large{
+				font-size:248%;
+			
+			}
+
+			#green{
+				color:green;
+			}
+			
+			.underlined{
+				text-decoration:underline;
+			}
+			
+			#first-section{
+				color:blue;
+				background-color:#16A085;
+				width:200px;
+				margin:50px 25px 75px 100px; 
+
+				float:left;
+			
+				Z-index:1;
+				
+			
+			}
+			
+			#second-section{
+				background-color:#8AB4F7;
+				width:200px;
+				margin-top:50px;
+
+				z-index:2;
+				
+			}
+			
+			#thrid-section{
+				background-color:#3DB2F9;
+				width:300px;
+				margin-top:50px;
+				margin-bottom:50px;
+				margin-top:20px;
+				margin-bottom:20px;
+
+				z-index:2;
+				
+			}
+
+	
+			
+
+
+		</style>
+
+		
+	</head>
+	
+	<body>
+
+		<div id="first-section">
+
+		</p>
+		<hr>
+		<p><b>this example section has a 50 pixel top, 25 pixel bottom, 75 pixel left and 100 pixel right margin (ie its surrounded by pixels and elements can't enter within that set number of pixel range)</b>
+		   <i>also has a left float which will make it hold is position by the left of the page</i>
+		</p>
+		
+		
+		
+		</div>
+
+		<div id="second-section">
+		<HR>	
+		<h1 class ="red large">example header has a top margin of 50 pixels </h1>
+		<p>this example section is green because of internal css styling using ids (# is a id selecter in css)
+			<span class="underlined">and this part is underlined using span and classes</span>
+			 <BR>SPANS & W/ CLASSES CAN BE USED ANYWHERE TO GIVE SPECFIC THINGS STYLING
+
+
+			<h1>*the point of margins is you want a element to stay in the flow of the page and move the element relative to it and positions is the opposite<h1>
+		</p>
+		</div>
+
+		<div id ="thrid-section">
+		<H2><SUP>this example section has a 50 pixels top and bottom, 20 pixels left and right margin </sup></H2>
+		</div>
+
+
+		
+		
+		
+		
+
+	</body>
+	
+
+</html>
