@@ -1,0 +1,143 @@
+<html>
+	<head>
+		<title>positioning webpage</title>
+
+		--<i><b>ALL THE 3 TYPE OF POSITIONS CAN BE MOVED WITH LEFT,RIGHT,TOP,OR BOTTOM POSITIONINGS<b><i>--
+
+		<style type="text/css">
+
+			.red{
+				color:red;
+			
+			}
+
+			.large{
+				font-size:248%;
+			
+			}
+
+			#green{
+				color:green;
+			}
+			
+			.underlined{
+				text-decoration:underline;
+			}
+			
+			#first-section{
+				color:blue;
+				background-color:#16A085;
+				width:200px;
+				position:relative;
+				left:300px;
+				top:300px;
+
+				Z-index:1;
+				
+			
+			}
+			
+			#second-section{
+				background-color:#8AB4F7;
+				width:200px;
+				position:relative;
+				left:100px;
+				top:100px;
+
+				z-index:2;
+				
+			}
+
+			.thrid-section{
+				background-color:red;
+				text-decoration:underline;
+				position:relative;
+				z-index:3;
+				opacity:.5;
+			}
+			
+			.fourth-section{
+				background-color:lightgreen;
+				color:white;
+				position:absolue;
+				z-index4;
+			}
+			
+			.fifth-section{
+				background-color:orange;
+				color:red;
+				position:fixed;
+				bottom:400px;
+				z-index:5;
+			} 
+
+
+
+
+		</style>
+
+		
+	</head>
+	
+	<body>
+
+		<div id="first-section">
+
+		</p>
+		<hr>
+		<p><b>this example sentence position is relative to the size of the webpage and moved to the right by 300px because of positioning w/ internal css styling using classes (. is a class selecter in css)</b>
+		   <i> for the left/right/bottom/top positioning the way to imagine it is that the element you want moved is on that side of a box of pixels <br> EX:left:300px; moves the element to the right by 300 pixels</i>
+		</p>
+		
+		
+		
+		</div>
+
+		<div id="second-section">
+		<HR>	
+		<h1 class ="red large">example header with internal css styling using classes in red and 248% font</h1>
+		<p>this example sentence is green because of internal css styling using ids (# is a id selecter in css)
+			<span class="underlined">and this part is underlined using span and classes</span>
+			 <BR>SPANS & W/ CLASSES CAN BE USED ANYWHERE TO GIVE SPECFIC THINGS STYLING
+
+
+			<h1>*the point of relative positioning is so you can have a element that moves relative to where it would otherwise be in the webpage and can be moved on top of other elements<h1>
+		</p>
+		</div>
+
+	
+		<div class="thrid-section">
+		<p>
+			You can use as many ids on a webpage as you like, but you should not use the same id more than once.
+			A class can be applied to several different elements on a page, and in fact you can apply several different classes to the same element. 
+			In contrast, an id is used to identify (there's a clue in the term) just one element on the page. And you can only apply one id to any one element. 
+			It is actually possible to use the same id more than once, but the point is that you shouldn't. 
+
+
+			*FOR POSITIONING ANYTHING WITH THE THE HIGHER Z-INDEX WILL BE PLACED ON TOP OF WHATEVER ELEMENT HAS A LOWER Z-INDEX(IE OVERLAPPING)*
+			AND YOU NEED ONE OF 3 POSTIONINGS TO DO SO
+
+			this section's opacity =.5 and can be anything between 0 & 1 and the higher the number the visibility of the elements gets bolder and vice versa
+		</p>
+
+		</div>
+		
+	
+		<div class="fourth-section">
+		<p>this paragraph will has absolute positioning (ie this paragragh won't be in the same flow as the webpage and will ignore the postioning of other elements )</p>
+		<h1>*the point of absolute positioning is so you can have a element that ignores the flow of the webpage and can be moved relative to the top left of the webpage and can be moved on top of other elements and will move when the the webpage moves(ex scrolling) <h1>
+		</div>
+
+		
+		<div class="fifth-section">
+		<p><small>this paragraph will has fixed positioning (ie this paragragh won't be in the same flow as the webpage and will ignore the postioning of other elements and will stay in the same position on the page no matter where the webpage moves )<small></p>
+		<h1>*the point of fixed positioning is so you can have a element that holds its position no matter where the webpage moves(ex scrolling) and ignores the flow of the webpage and can be placed on top of other elements <h1>
+		</div>
+
+		
+		
+
+	</body>
+	
+
+</html>
