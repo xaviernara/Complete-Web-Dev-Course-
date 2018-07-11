@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>paddings webpage</title>
+
+
+		<style type="text/css">
+
+			.red{
+				color:red;
+			
+			}
+
+			.large{
+				font-size:248%;
+			
+			}
+
+			#green{
+				color:green;
+			}
+			
+			.underlined{
+				text-decoration:underline;
+			}
+			
+			#first-section{
+				color:blue;
+				background-color:#16A085;
+				width:200px;
+				padding:50px 45px 35px 75px;
+				float:left;
+				Z-index:1;
+				
+			
+			}
+			
+			#second-section{
+				background-color:#8AB4F7;
+				width:200px;
+				z-index:2;
+				
+			}
+			
+			#thrid-section{
+				background-color:#3DB2F9;
+				width:300px;
+				z-index:2;
+				
+			}
+
+			body{
+				margin:0;
+				padding:0;
+
+			}
+
+			p{
+				margin:0;
+				padding:0;
+
+			}
+			
+
+
+		</style>
+
+		
+	</head>
+	
+	<body>
+
+		<div id="first-section">
+
+		</p>
+		<hr>
+		<p><small>this example section has a padding inside the section which basically puts room between the text and border of the section<small>
+			<br>
+		   <b>50 pixel , 45 pixel bottom, 35 pixel left and 75 pixel right padding (ie the text is surrounded by pixels)</b>
+		   <i>also has a left float which will make it hold is position by the left of the page</i>
+		</p>
+		
+		
+		
+		</div>
+
+		<div id="second-section">
+		<HR>	
+		<h1 class ="red large">example header has a top margin of 50 pixels </h1>
+		<p>this example section is green because of internal css styling using ids (# is a id selecter in css)
+			<span class="underlined">and this part is underlined using span and classes</span>
+			 <BR>SPANS & W/ CLASSES CAN BE USED ANYWHERE TO GIVE SPECFIC THINGS STYLING
+
+
+			<h1> the width's pixels sit on top of the padding's pixels which means that margin,positioning, and padding tags add to the width pixels <br> (EX: the 1st section's width = 320 pixels)<h1>
+		</p>
+		</div>
+
+		<div id ="thrid-section">
+		<H2><SUP>padding can be applied to not just only individual divisions but to the whole webpage's <br>paragraphs, body, etc by make a body, p, etc tag and changing its pading, margins, etc  </sup></H2>
+		</div>
+
+	</body>
+	
+
+</html>
