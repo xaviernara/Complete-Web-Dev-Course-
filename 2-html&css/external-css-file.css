@@ -1,0 +1,22 @@
+
+	   
+
+			a:hover{
+				text-decoration:underline;
+				color:purple;
+
+			}
+
+			a:visited{
+				
+				color:blue;
+				
+
+			}
+
+			
+
+			a{
+				text-decoration:none;
+				font-size:200%;
+			 }
