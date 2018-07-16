@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>responding to clicks webpage</title>
+		
+		
+	</head>
+	
+	<body>
+		<p id="text">hello world</p>
+
+		<button id="myButton">change text</button>
+
+		<script type="text/javascript">
+
+			//single line comment
+	
+			/*
+
+				multi line comment
+			*/	
+			
+			document.getElementById("myButton").onClick = function() {
+
+
+				document.getElementById("text").innerHTML= "the html text will change when button is pressed";
+
+			}
+			
+
+		</script>
+
+	</body>
+	
+
+</html>
