@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>changing website content webpage</title>
+		
+		
+	</head>
+	
+	<body>
+		<p id="text">hello world</p>
+
+		<button id="myButton">change text</button>
+
+		<hr>
+
+		<p id="secondParagraph">Javascript is....</p>
+
+		<button id="secondButton">append text</button>
+
+		<hr>
+
+		<p id="emptyParagraph"></p>
+
+		<button id="createParagraph ">create text</button>
+
+		<script type="text/javascript">
+
+			
+			document.getElementById("myButton").onclick = function() {
+
+				alert("appears when button is clicked");
+				document.getElementById("text").innerHTML= "the html text will change when button is pressed";
+			}
+
+			document.getElementById("secondButton").onclick = function() {
+
+				alert("appears when 2nd button is clicked");
+				//document.getElementById("secondParagraph").innerHTML= "the 2nd html text will change when button is pressed";
+				document.getElementById("secondParagraph").innerHTML= "I think " + document.getElementById("secondParagraph").innerHTML+"AWESOME";
+			}
+			
+
+			document.getElementById("createParagraph").onclick = function() {
+
+				alert("appears when 3rd button is clicked");
+				document.getElementById("emptyParagraph").innerHTML= "<h1>Hey Hey Hey</h1>";
+			}
+			
+			
+
+		</script>
+
+	</body>
+	
+
+</html>
