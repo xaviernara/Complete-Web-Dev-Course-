@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>how many fingers webpage</title>
+		
+		
+	</head>
+
+	<body>
+		<h2>How many fingers?</h2>
+		<input type="text" id="inputText"></input>
+		<button id= "guessButton">Guess!!</button>
+
+		<script type="text/javascript">
+			
+			
+			document.getElementById("guessButton").onclick = function(){
+
+				//this creates a whole random number btwn 0-10
+				var randomNumber = Math.floor(Math.random()*11);
+				
+				var randomNumberEntered = document.getElementById("inputText").value;
+
+				if (randomNumberEntered == randomNumber){
+					alert("correct");
+				}
+				else{
+					alert("incorrect this is the correct number "+ randomNumber);
+				}
+
+			}
+
+		</script>
+
+	</body>
+	
+
+</html>
