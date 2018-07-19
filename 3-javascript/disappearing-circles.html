@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>disappearing circles webpage</title>
+		
+		
+	</head>
+
+	<style type="text/css">
+
+		p{
+			font-size:20px;
+		}
+
+		.circle{
+			width:200px;
+			float:left;
+			height:200px;
+			border-radius:50%;
+			margin:50px;
+		}
+
+		#first{
+			background-color:red;
+			
+		}
+
+		#second{
+			background-color:blue;
+			
+		}
+
+		#third{
+			background-color:yellow;
+		
+		}
+
+	
+	
+
+	</style>
+
+
+
+	
+	<body>
+
+		<div id="first" class="circle">
+			<p>1</p>
+		</div>
+
+		<div id="second" class="circle">
+			<p>2</p>
+		</div>
+
+		<div id="third" class="circle">
+			<p>3</p>
+		</div>
+		
+		
+		
+
+
+		<script type="text/javascript">
+			
+			document.getElementById("first").onclick= function(){
+				document.getElementById("first").style.display = "none";
+			}
+
+			document.getElementById("second").onclick= function(){
+				document.getElementById("second").style.display = "none";
+			}
+			document.getElementById("third").onclick= function(){
+				document.getElementById("third").style.display = "none";
+			}
+			
+			
+		
+		</script>
+
+	</body>
+	
+
+</html>
