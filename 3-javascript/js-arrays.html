@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>js arrays webpage</title>
+		
+		
+	</head>
+
+
+	</style>
+
+	<body>
+
+		<script type="text/javascript">
+
+			var myArray = new Array();
+			myArray[0] = 1;
+			myArray[1] = 45;
+			
+			//this displays the contents of the array on the console log 
+			console.log(myArray);
+
+			var tweets = ["hello", "hey hey hey", "yo"];
+			alert(tweets[2]);
+
+			//push adds elements to a array (similar to pushing on to a stack)
+			tweets.push("naruto");
+			console.log(tweets);
+
+			//this is one way to delete elements to a array
+			//array.splice(start position to start deleting, delete this # of elements after the starting positon)
+			tweets.splice(2, 1);
+			console.log(tweets);
+
+
+			//this is one way to replacing elements in a array
+			//array.splice(start position to start deleting, delete this # of elements after the starting positon, this adds a element to the place that something was deleted)
+			tweets.splice(1, 1,"richardson");
+			console.log(tweets);
+
+
+			//this is another way to adding elements in a array
+			//array.splice(start position to start deleting, delete this # of elements after the starting positon, this adds a element to the place that something was deleted)
+			tweets.splice(1, 0,"richardson","yugioh");
+			console.log(tweets);
+			
+
+			//this displays the length of the array to the console log
+			console.log(tweets.length);
+
+		</script>
+
+	</body>
+	
+
+</html>
