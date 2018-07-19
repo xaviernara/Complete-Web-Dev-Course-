@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>js variable webpage</title>
+		
+		
+	</head>
+
+
+	</style>
+
+
+
+	
+	<body>
+
+		<p id="someText">this text will be changed to whatever's entered in the textbox</p>
+		<input type="text" id="textInput"></input> 
+		<button id="textChanger">Change the Text</button>
+
+		
+
+
+		<script type="text/javascript">
+
+			
+			
+			document.getElementById("textChanger").onclick= function(){
+
+				var textEntered ="";
+				textEntered = document.getElementById("textInput").value;
+				alert(textEntered);
+
+				document.getElementById("someText").innerHTML = textEntered;
+			}
+			
+
+		</script>
+
+	</body>
+	
+
+</html>
