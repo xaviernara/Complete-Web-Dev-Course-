@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>js  if statements webpage</title>
+		
+		
+	</head>
+
+	<body>
+		<h2>Guess the magic world</h2>
+		<input type="text" id="inputText"></input>
+		<button id= "guessButton">Guess!!</button>
+
+		<script type="text/javascript">
+
+			var magicWord = "anime";
+			
+			document.getElementById("guessButton").onclick = function(){
+				var magicWordEntered = document.getElementById("inputText").value;
+
+				if (magicWordEntered == magicWord){
+					alert("correct");
+				}
+				else{
+					alert("incorrect");
+				}
+
+
+			}
+
+			//this displays the length of the array to the console log
+			console.log(tweets.length);
+
+		</script>
+
+	</body>
+	
+
+</html>
