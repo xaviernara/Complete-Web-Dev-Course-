@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>js for loops webpage</title>
+	</head>
+
+	<body>
+		
+		<div id="tweetDiv">
+
+		</div>
+		
+
+		<script type="text/javascript">
+			
+			var tweetNumbers = 0;
+			var tweets = [12,234,455];
+			
+			for(var index =0; index<tweets.length;index++){
+				tweetString= tweetNumbers + "<p>" + tweets[index] + "</p>";
+			}
+			
+			document.getElementById("tweetDiv").innerHTML= tweetNumbers;
+
+		</script>
+
+	</body>
+	
+
+</html>
