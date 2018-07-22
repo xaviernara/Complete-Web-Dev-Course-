@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>changing website content webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+		<style>
+			#circle{
+				width: 150px;
+				height: 150px;
+				border-radius:50%;
+				background-color:green;
+				margin:10px;
+			}
+
+
+			.square{
+				width: 150px;
+				height: 150px;
+				background-color:blue;
+				margin:10px;
+			}
+
+		</style>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div class ="square"></div>
+
+
+		<p>This text will change when the circle is clicked</p>
+
+		<iframe src="http://masterani.me">
+
+		<script type = "text/javascript">
+			
+			//this is the jQuery version of a onclick method
+			//this will make a alert when the div with circle id is clicked
+			$("#circle").click(function(){
+
+				//this will change the content of the paragraph text
+				// this is the same as the innerHTML in javascript 
+				$("p").html("the text has changed becuz of the circle was clicked");
+	
+			});
+
+			//this is the jQuery version of a hover method
+			//this will make a alert when the div with circle id is hovered over
+			$("#circle").hover(function(){
+
+				//this will get the content from the paragraph tag and make it a alert
+				alert($("p").html());
+
+	
+			});
+
+			//this is the jQuery version of a hover method
+			//this will make a iframe change the website displayed when the div with square id is hovered over
+			$(".square").hover(function(){
+				
+				//this will change the src attribute in the iframe tag to another website
+				//REMINDER: you can only use iframe on unsecure websites or there will be errors 
+				//Ex: example.com
+				$("iframe").attr("src","http://example.com");
+	
+			});
+
+
+
+			
+
+
+		</script>
+
+
+	</body>
+	
+
+</html>
