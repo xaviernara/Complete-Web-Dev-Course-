@@ -1,0 +1,140 @@
+<html>
+	<head>
+		<title>fading content webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+		<style>
+			#circle{
+				width: 150px;
+				height: 150px;
+				border-radius:50%;
+				background-color:green;
+				margin:10px;
+			}
+
+
+			#square{
+				width: 150px;
+				height: 150px;
+				background-color:blue;
+				margin:50px;
+			}
+
+
+			#square2{
+				width: 150px;
+				height: 150px;
+				background-color:yellow;
+				margin:50px;
+			}
+
+			
+			#hiddenText{
+
+				display: none;
+			}
+
+			
+		
+
+		</style>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div id ="square"></div>
+		<div id ="square2"></div>
+
+		<p id="unhiddenText">This will fade out when the button is clicked</p>
+		<button id="fadeOut">Fade out text</button>
+		<hr>
+
+		<p id="hiddenText">This will fade in when the button is clicked</p>
+		<button id="fadeIn">Fade in text</button>
+		<hr>
+
+		<p id="text">This will fade in and out when the button is clicked</p>
+		<button id="toggle">Toggle text</button>
+		
+		<script type = "text/javascript">
+
+
+			//this is the jQuery version of a onclick method
+			//this will make any div disappear when clicked and alert what its id is
+			$("div").click(function(){
+
+				//this will alert when the fade out is finished
+				$(this).fadeOut("slow",function(){
+					
+					//REMINDER:the "this" keyword refers to the id,class,tag, etc thats being called,clicked, hovered by the user or 
+					//whatever the code writer wants to refer to somewhere else in the code without rewriting it
+
+					//this will fade out any div thats clicked (ie background color) 
+					//$(this).fadeOut("slow");
+
+					//this will alert when the fade out is finished
+					alert("fade out has finished");
+
+				});
+
+				
+			});
+
+			/////////////////////////////////////////////////////////
+			//This will fade out the paragraph when the button is clicked
+		
+			$("#fadeOut").click(function() {
+				
+				$("#unhiddenText").fadeOut();
+
+			});
+
+			/////////////////////////////////////////////////////////
+			//This will fade in the paragraph when the button is clicked
+			
+			$("#fadeIn").click(function() {
+				
+				$("#hiddenText").fadeIn()
+			});
+
+			/////////////////////////////////////////////////////////
+			//This will toggle the paragraph when the button is clicked
+			//by using a boolean to see if the text is faded or not 
+
+			var textShowing = true;
+
+			$("#toggle").click(function(){
+
+				if(textShowing){
+
+					$("#text").fadeOut(function(){
+
+						textShowing=false;
+
+					});
+					
+				}
+				else{
+					
+					$("#text").fadeIn(function(){
+
+						textShowing=true;
+
+					});
+				}
+			
+
+
+			});
+
+		</script>
+
+
+	</body>
+	
+
+</html>
