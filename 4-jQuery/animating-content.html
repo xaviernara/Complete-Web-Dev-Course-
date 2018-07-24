@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>animating content webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+		<style>
+			#circle{
+				width: 150px;
+				height: 150px;
+				border-radius:50%;
+				background-color:green;
+				margin:10px;
+			}
+
+
+			#square{
+				width: 150px;
+				height: 150px;
+				background-color:blue;
+				margin:50px;
+			}
+
+
+			#square2{
+				width: 150px;
+				height: 150px;
+				background-color:yellow;
+				margin:50px;
+			}
+
+			
+		
+
+		</style>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div id ="square"></div>
+		<div id ="square2"></div>
+
+		
+		<script type = "text/javascript">
+
+
+			//this is the jQuery version of a onclick method
+			//this will animate any tag with the circle id when clicked (ie animate the width,height,margins and background color)
+			$("#circle").click(function(){
+				
+				$(this).animate({
+				    	width:"400px",
+				    	height:"400px",
+					marginLeft:"10px",
+					marginTop:"20px"
+					},4000, function(){
+							//made a function that will change the background color at the end of the animation
+							$(this).css("background-color","red");
+
+						});
+				    
+
+			});
+
+				
+
+			
+		</script>
+
+
+	</body>
+	
+
+</html>
