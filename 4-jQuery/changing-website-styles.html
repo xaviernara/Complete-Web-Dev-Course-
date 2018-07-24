@@ -1,0 +1,119 @@
+<html>
+	<head>
+		<title>changing website styles webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+		<style>
+			#circle{
+				width: 150px;
+				height: 150px;
+				border-radius:50%;
+				background-color:green;
+				margin:10px;
+			}
+
+
+			#square{
+				width: 150px;
+				height: 150px;
+				background-color:blue;
+				margin:50px;
+			}
+
+
+			#square2{
+				width: 150px;
+				height: 150px;
+				background-color:yellow;
+				margin:50px;
+			}
+
+		</style>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div id ="square"></div>
+		<div id ="square2"></div>
+		
+		<script type = "text/javascript">
+
+
+			//you can use a combination of click,hover,and etc to change any aspect of the webpage 
+			/*EX:   $("#switch_css").click(function() {
+   				 	$("#my_stylesheet").attr("href", $(this).data("theme"));
+				}
+			
+			*/
+
+			//this is the jQuery version of a onclick method
+			//this will change the width of the div when the tag with circle id is clicked
+			//also tell the width of the width of the body of the page
+			$("#circle").click(function(){
+
+				//this will change the style of the circle id (ie width)
+				// this is the same as writing actual  css code  
+				$("#circle").css("width","400px");
+
+				//this will alert the width of the body
+				alert($("body").css("width"));
+			});
+
+			
+			//this is the jQuery version of a onclick method
+			//this will change the background color of the div when the tag with square id is clicked
+			$("#square").click(function(){
+
+				//this will change the style of the square id (ie background color)
+				// this is the same as writing actual  css code  
+				$("#square").css("background-color","red");
+
+				//this will alert the background color of the id
+				alert($("#square").css("background-color"));
+			});
+
+
+			//this is the jQuery version of a onclick method
+			//this will make any div disappear when clicked and alert what its id is
+			$("div").click(function(){
+
+				//REMINDER:the "this" keyword refers to the id,class,tag, etc thats being called,clicked, hovered by the user or 
+				//whatever the code writer wants to refer to somewhere else in the code without rewriting it
+
+				//this will change the style of the square id (ie background color)
+				// this is the same as writing actual  css code  
+				$(this).css("display","none");
+
+
+
+				//this
+				if($(this).attr("id") == "circle"){
+					
+					alert("you clicked a circle");
+				}
+				else{
+					alert("you clicked a square");
+
+				}
+
+
+			});
+
+
+			
+
+
+			
+
+
+		</script>
+
+
+	</body>
+	
+
+</html>
