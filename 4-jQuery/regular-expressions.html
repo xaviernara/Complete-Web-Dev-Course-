@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>regular expressions webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div id ="square"></div>
+		<div id ="square2"></div>
+
+		<a href="http://regex101.com">Visit here for more help with regex</a>
+
+		
+		<script type = "text/javascript">
+
+			//regex= regular expression =a sequence of characters that define a search pattern.
+			//this defines a case insensitive(i flag) sequence of characters pattern
+			//case insensitive-Treating or interpreting upper- and lowercase letters as being the same.
+        		var regex = /Great/i;
+
+			//this defines a global(g flag) sequence of characters pattern
+			var regex2 = /e/g;
+
+			var string = "Regex is gReAT";
+
+			//this basically finds and matches the case insensitive sequence of characters(ie instance) pattern in the string and alerts it
+			var result = string.match(regex);
+			alert("This is the case insensitive regex that was found in the string: "+result);
+			
+			
+			//this basically finds and matches the global sequence of characters(ie instance) pattern in the string and alerts it
+			var result2 = string.match(regex2);
+			alert("This is the global regex that was found in the string: "+result2);
+
+        
+
+			
+		</script>
+
+
+	</body>
+	
+
+</html>
