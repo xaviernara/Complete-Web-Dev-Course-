@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>AJAX webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+		<style>
+			#circle{
+				width: 150px;
+				height: 150px;
+				border-radius:50%;
+				background-color:green;
+				margin:10px;
+			}
+
+
+			#square{
+				width: 150px;
+				height: 150px;
+				background-color:blue;
+				margin:50px;
+			}
+
+
+			#square2{
+				width: 150px;
+				height: 150px;
+				background-color:yellow;
+				margin:50px;
+			}
+
+			
+		
+
+		</style>
+
+	</head>
+
+		
+
+	<body>
+		
+		<div id ="circle"></div>
+		<div id ="square"></div>
+		<div id ="square2"></div>
+
+		
+		<script type = "text/javascript">
+
+
+			//this is the jQuery version of a onclick method
+			//this will get the data the specified file and alert it
+			$.get("fading-content.html",function(data){
+				
+				alert(data);				    
+			});
+
+				
+
+			//AJAX (Asynchronous JavaScript and XML) is the art of exchanging data with a server, and update parts of a web page - without reloading the whole page.
+          		//This uses basic AJAX methods to access the file and get the data from it and when its done
+			//it will update the paragraph tags with the file data and if that fails then a alert will appear
+ 	          	$.ajax("fading-content.html").done(function(data) {
+                
+               			 $("p").html(data);
+               		 })
+
+               		 .fail(function() {
+                
+                		alert("Could not get data");
+                	
+                	});
+            
+        
+        
+
+			
+		</script>
+
+
+	</body>
+	
+
+</html>
