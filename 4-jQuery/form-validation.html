@@ -1,0 +1,224 @@
+<html>
+	<head>
+		<title>mini project: form validation webpage</title>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+	<style>
+            
+            body {
+
+                font-family: helvetica, sans-serif;
+                font-size:130%;
+
+            }
+
+            input {
+
+                padding: 5px 5px 12px 5px;
+                font-size: 25px;
+                border-radius: 5px;
+                border: 1px solid grey;
+                width:320px;
+
+                }
+            
+            label {
+                
+                position: relative;
+                top:12px;
+                width:200px;
+                float: left;
+                
+            }
+            
+            #wrapper {
+                
+                width: 550px;
+                margin: 0 auto;
+                
+                
+            }
+            
+            .form-element {
+                
+                margin-bottom: 10px;
+                
+            }
+            
+            #submitButton {
+                
+                width: 130px;
+                margin-left: 200px;
+            }
+            
+            #errorMessage {
+                
+                color: red;
+                font-size: 90% !important;
+                
+            }
+            
+            #successMessage {
+                
+                color: green;
+                font-size: 90% !important;
+                display:none;
+                margin-bottom:20px;
+                
+            }
+            
+        
+
+	</style>
+
+	</head>
+
+		
+
+	<body>
+		//this div "wraps" the other div so any css applyed to it will be applied to all the divs inside of it
+		<div id="wrapper">
+
+            //this displays when the email,password,confirm password & telephone label input fields are filled and match
+            <div id="successMessage">You've done it! Congratulations.</div>
+            
+	    //this displays when the email,password,confirm password & telephone label input fields are filled and dont match
+            <div id="errorMessage"></div>
+            
+	    //div for the email label input
+            <div class="form-element">
+        
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="eg. yourname@gmail.com">
+                
+            </div>
+
+            //div for the telephone label input
+            <div class="form-element">
+            
+                <label for="phone">Telephone</label>
+                <input type="text" name="phone" id="phone" placeholder="eg. 0123456789">
+
+            </div>
+            
+            //div for the password label input
+            <div class="form-element">
+            
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+
+            </div>
+            
+	   //div for the confirm password label input
+            <div class="form-element">
+            
+                <label for="passwordConfirm">Confirm Password</label>
+                <input type="password" name="passwordConfirm" id="passwordConfirm">
+
+            </div>
+            
+	    //div for the sign up input button
+            <div class="form-element">
+            
+                <input type="submit" id="submitButton" value="Sign Up" <="" div="">
+           </div>
+
+	</div>
+        
+        <script type="text/javascript">
+            
+	    //function that tests if the user input matches the email regex below (EX: username@gmail.com)
+            function isEmail(email) {
+  
+		
+		//tests if the user input matches the email regex 
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  
+                return regex.test(email);
+                
+            }
+            
+            $("#submitButton").click(function() {
+                
+		//this is the string that displayed as the error message
+                var errorMessage = "";
+
+		//this displays when the inputs are blank
+                var fieldsMissing = "";
+                
+		//tests if the email labal input is blank and adds to  fieldsMissing error message
+                if ($("#email").val() == "") {
+                    
+                    fieldsMissing += "<br>Email";
+                    
+                }
+                
+		//tests if the telephone labal input is blank and adds to  fieldsMissing error message
+                if ($("#phone").val() == "") {
+                    
+                    fieldsMissing += "<br>Telephone";
+                    
+                }
+                
+		//tests if the password labal input is blank and adds to  fieldsMissing error message
+                if ($("#password").val() == "") {
+                    
+                    fieldsMissing += "<br>Password";
+                    
+                }
+
+                //tests if the password confirm labal input is blank and adds to fieldsMissing error message
+                if ($("#passwordConfirm").val() == "") {
+                    
+                    fieldsMissing += "<br>Confirm Password";
+                    
+                }
+                
+		//tests if the fieldsMissing isn't blank and adds to the error message each blank field 
+                if (fieldsMissing != "") {
+                    
+                    errorMessage += "<p>The following field(s) are missing:" + fieldsMissing;
+                    
+                }
+                
+		//tests if the email labal input doesn't match the email regex and adds to the error message
+                if (isEmail($("#email").val()) == false) {
+                    
+                    errorMessage += "<p>Your email address is not valid</p>";
+                    
+                }
+                
+		//tests if the phone labal input doesn't match the phone regex and adds to the error message
+                if ($.isNumeric($("#phone").val()) == false) {
+                    
+                    errorMessage += "<p>Your phone number is not numeric</p>"
+                    
+                }
+                
+		//tests if the password labal input doesn't match the password comfirm input label and adds to the error message
+                if ($("#password").val() != $("#passwordConfirm").val()) {
+                    
+                    errorMessage += "<p>Your passwords don't match</p>";
+                    
+                }
+                
+		//tests if the error message is not blank and shows the error message to the screen
+                if (errorMessage != "") {
+                    
+                    $("#errorMessage").html(errorMessage);
+                    
+                } 
+		//else the success message is shown
+		else {
+                    
+                    $("#successMessage").show();
+                    $("#errorMessage").hide();
+                    
+                }
+                
+            });
+            
+            
+        </script>
+ 
+</html>
