@@ -53,7 +53,7 @@
 //this is html is to get numeric input from the user and using the GET variables in php you can manipulate the input 
 <p>Please enter a whole number.</p>
 
-<form>
+<form method ="get">
 
     <input name="number" type="text">
     
