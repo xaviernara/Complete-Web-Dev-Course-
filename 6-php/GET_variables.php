@@ -1,4 +1,13 @@
 <?php
+//More info:http://w3schools.sinsixx.com/php/php_get.asp.htm
+//The $_GET variable is an array of variable names and values sent by the HTTP GET method.
+/*
+The $_GET variable is used to collect values from a form with method="get". 
+Information sent from a form with the GET method is visible to everyone (it will be displayed in the browser's address bar) 
+and it has limits on the amount of information to send (max. 100 characters).
+*/
+
+
 //GET VARIABLES get the user input thats in the url and lets you manipulate them 
 
 //this determines if the user's numeric input is prime or not by using GET variables
@@ -53,7 +62,8 @@
 //this is html is to get numeric input from the user and using the GET variables in php you can manipulate the input 
 <p>Please enter a whole number.</p>
 
-<form>
+//the default of form is GET
+<form method ="get">
 
     <input name="number" type="text">
     
