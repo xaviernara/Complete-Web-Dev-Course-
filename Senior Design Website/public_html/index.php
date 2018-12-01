@@ -1,4 +1,6 @@
 <?php
+	//$username = mysqli_real_escape_string($link, $_POST['username']);
+
 
 	/*
 		When you work with an application, you open it, do some changes, and then you close it. This is much like a Session. The computer knows who you are. It knows when you start the application and when you end. 
@@ -39,6 +41,7 @@
 	else if ((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])){
     
     	header("Location: loggedInPage.php");
+        //header("Location: nextpage.php");
       
     }
 ///////////////////////////////////////////////////////////////////////////
@@ -60,29 +63,44 @@
         else if ($_POST['email'] && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) {
             
             $error .= "<p>The email address is invalid.</p>";
+          	//echo "<p>The email address is invalid.</p>";
             
         }
       
        else if ($_POST['password'] == '') {
             
-            $error.=  "<p>Password is required.</p>";
-            
+            //$error.=  "<p>Password is required.</p>";
+            echo  "<p>Password is required.</p>";
         }
-      /*
-      	 else if ($_POST['full_name'] == '') {
-            
-            $error.=  "<p>full name is required.</p>";
-            
-        }
-      */
       
+      else if ($_POST['full_name'] == '') {
+            
+            //$error.=  "<p>Full name is required.</p>";
+        	echo  "<p>Full name is required.</p>";
+            
+        }
+      else if ($_POST['username'] == '') {
+            
+           // $error.=  "<p>Username is required.</p>";
+            echo "<p>Username is required.</p>";
+        }
+      else if ($_POST['courseName'] == '') {
+            
+            //$error.=  "<p>Course Name is required. (E.g. ECE 456)</p>";
+            echo "<p>Course Name is required. (E.g. ECE 456)</p>";
+        } 
+     else if ($_POST['courseID'] == '') {
+            
+             // $error.=  "<p>Course ID is required. (E.g. ECE 456)</p>";
+              echo "<p>Course ID is required. (e.g. ECE 456)</p>";
+        } 
       
       
       	else {
             
           if($_POST['signUp']=='1'){
           
-            $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+            $query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
             
             $result = mysqli_query($link, $query);
             //this if checks the database to test if the email input matches a email in the database and displays a error message
@@ -96,16 +114,25 @@
 			//else the user's email and password input is inserted into the database if no matches have been found in the database
 			else {
                 
-                              $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".mysqli_real_escape_string($link, $_POST['password'])."')";
+                              //$query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".mysqli_real_escape_string($link, $_POST['password'])."')";
+              //$query = "INSERT INTO `Professors` (`email`, `password`,`fullname`,`username`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".mysqli_real_escape_string($link,$_POST['password'])."','".mysqli_real_escape_string($link, $_POST['full_name'])."','$username')";
+              $query = "INSERT INTO `Professors` (`email`, `password`,`fullname`,`username`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".mysqli_real_escape_string($link,$_POST['password'])."','".mysqli_real_escape_string($link, $_POST['full_name'])."','".mysqli_real_escape_string($link, $_POST['username'])."')";
+              
+              //$query2 = "INSERT INTO `Course` (`courseID`,`courseName`,`professorID`) VALUES('".mysqli_real_escape_string($link, $_POST['courseID'])."', '".mysqli_real_escape_string($link, $_POST['courseName'])."','".mysqli_real_escape_string($link, $_POST['username'])."')";
+				//$query = "INSERT INTO `Course` (`courseID`,`courseName`,`professorID`) VALUES('".mysqli_real_escape_string($link, $_POST['courseID'])."', '".mysqli_real_escape_string($link, $_POST['courseName'])."','$username')";
+				$query2 = "INSERT INTO `Course` (`courseID`,`courseName`,`professorID`) VALUES('".mysqli_real_escape_string($link, $_POST['courseID'])."', '".mysqli_real_escape_string($link, $_POST['courseName'])."','".mysqli_real_escape_string($link, $_POST['username'])."')";
 
               
                 
-				//if the insertion of the user's email & passeword wasn't successful the a error message is displayed
+				//if the insertion of the user's email, passeword and full name wasn't successful the a error message is displayed
                //else the user's email is saved in the session (ie their info is in the database)
 				//and the user is sent to another website
-                if (!mysqli_query($link, $query)) {
+                if (!mysqli_query($link, $query) || !mysqli_query($link, $query2) ) {
+              	//if (!mysqli_multi_query($link, $query) ) {
                     
                    $error = "<p>There was a problem signing you up - please try again later.</p>";
+                   echo("<p>Error description: </p>" . mysqli_error($link));
+              	   echo("<p>Error Number: </p>". mysql_errno($link));
                   
                   
                   //$_SESSION['email'] = $_POST['email'];
@@ -128,7 +155,7 @@
                      
                   
                   	//refer to storing_passwords_securely.php in the drive for comments about this line of code about securing passwords 
-                  	$query = "UPDATE 'users' SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id()." LIMIT 1";
+                  	$query = "UPDATE `Professors` SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
                   
                   
                   	mysqli_query($link,$query);
@@ -144,8 +171,9 @@
                   
                
                // echo "sign up successful";
-                    
-                  header("Location: loggedInPage.php");
+                    header("Location: loggedInPage.php");
+                  //header("Location: loggedInPage.php?username=mysqli_real_escape_string($link, $_POST['username'])");
+                  //header("Location: nextpage.php");
             }
             
         }
@@ -155,7 +183,7 @@
       else {
       
       	   //print_r($_POST);
-         $query = "SELECT `id` FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+         $query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
         
          $result = mysqli_query($link,$query);
         
@@ -204,19 +232,22 @@
 
 
 <?php 
-		//the file has the hmtl/css code on it for the login/sign up pages and it's included so that theres only php for the 
+		//the file has the hmtl/css code on it for the styling of the login/sign up pages and it's included so that theres only php for the 
 		//email and password validation on this file 
 		include("htmlFromIndex.php"); 
 ?>
 
 <?php 
-		//the file has the javascript code on it for the toggling of the login/sign up pages and it's included so that theres only php for the 
+		//the file has the hmtl/css code on it for the login/sign up forms and it's included so that theres only php for the 
 		//email and password validation on this file 
 		include("formsFromIndex.php"); 
 
 ?>
 
 <?php 
+		//the file has the javascript code on it for the toggling of the login/sign up pages and it's included so that theres only php for the 
+		//email and password validation on this file 
+
 	include("javascriptFromIndex.php"); 
 
 

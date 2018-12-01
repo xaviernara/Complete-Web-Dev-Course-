@@ -41,6 +41,12 @@
         
       }
       
+      table{
+      	  	text-align: center;
+            width:400px;
+			margin-top:150px;
+      }
+      
       </style>
     
   </head>

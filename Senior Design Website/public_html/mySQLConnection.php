@@ -14,12 +14,11 @@
 
   $link = mysqli_connect("shareddb-h.hosting.stackcp.net", "userName-343365c7", "KatekyoReborn19", "userName-343365c7");
 
-
+			
               if (mysqli_connect_error()) {
 
                   die ("There was an error connecting to the database".mysqli_connect_error());
 
               } 
-
 
 ?>

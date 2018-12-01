@@ -19,7 +19,32 @@
                    <input class="form-control" name="password" type="password" placeholder="Password">
 
                </fieldset>
+              
+              <fieldset class="form-group">
 
+                   <input class="form-control" name="full_name" type="text" placeholder="Full Name">
+
+               </fieldset>
+              
+               <fieldset class="form-group">
+
+                   <input class="form-control" name="username" type="text" placeholder="Username">
+
+               </fieldset>
+              
+              <fieldset class="form-group">
+
+                   <input class="form-control" name="courseName" type="text" placeholder="Course Name (e.g. CS303)">
+
+               </fieldset>
+              
+               <fieldset class="form-group">
+
+                   <input class="form-control" name="courseID" type="text" placeholder="Course ID (e.g. 595)">
+
+               </fieldset>
+              
+  
                <div class ="checkbox">
 
                  <label>
@@ -37,7 +62,7 @@
 
                 </fieldset>
               
-				<p> <a class="toggleForm">Log In</a> </p>
+				<p><a class="toggleForm"> <u>Log In</u> </a> </p>
 
             </form>
 
@@ -46,7 +71,7 @@
               <p> Instructors Login</p>
                <fieldset class="form-group">
 
-                  <input class="form-control" name="email" type="text" placeholder="Email address">
+                  <input class="form-control" name="email" type="text" placeholder="Email Address">
 
                 </fieldset>
 
@@ -70,7 +95,7 @@
 
                 <input class="btn btn-success" type="submit" name ="submit" value = "Log In">
               
-              	<p><a class="toggleForm"> Sign Up </a></p>
+              	<p><a class="toggleForm"> <u>Sign Up</u> </a></p>
 
             </form>
 
