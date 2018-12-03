@@ -177,7 +177,7 @@ if (isset($_POST["ViewClasses"])) {
 	print_r (mysqli_fetch_row($result));
 	
 }
-
+/*
 if (isset($_POST["ViewStudents"])) {
 	//query selects the students full name, puid, date they attended, and their attendance for those days  
 	//based on if puid in both the attedance_lessons and studentsinfo match
@@ -185,13 +185,25 @@ if (isset($_POST["ViewStudents"])) {
 	$query = "SELECT DISTINCT studentsinfo.fullName,studentsinfo.PUID, attendance_lessons.date, attendance_lessons.attendance FROM studentsinfo INNER JOIN attendance_lessons on studentsinfo.PUID = attendance_lessons.PUID";
 	$result = mysqli_query($link, $query);
 	
-	if (mysqli_num_rows($result)>0){
-		
-		while ($row = mysqli_fetch_row($result)){
-			echo "<font color ="black"> Name: " .$row["fullName"]. "PUID: " .$row["PUID"]. "Date" . $row["date"] . "Attendance: " . $row["attendance"]. "</font> <br>"
+	if (mysqli_num_rows($result)> 0){
+		//output data of each row
+		while ($row = mysqli_fetch_assoc($result)){
+			$sql_fullname = $row["fullName"];
+			$sql_PUID = $row["PUID"];
+			$sql_date = $row["date"];
+			$sql_attendance =$row["attendance"];
+			
+			echo "<td><font color ='black'> Name: ".$sql_fullname."</font> <br></td>";
+			echo "<td><font color ='black'> PUID: ".$sql_PUID."</font> <br></td>";
+			echo "<td><font color ='black'> Date: ".$sql_date."</font> <br></td>";
+			echo "<td><font color ='black'> Attendance: ".$sql_attendance."</font> <br><td>";
+			
+			//echo "<font color ='black'> Name: " . $row["fullName"] . " PUID: " . $row["PUID"] . " Date " . $row["date"] . "Attendance: " . $row["attendance"] . "</font> <br>";
 			
 		}
-		
+	}
+	else{
+		echo "Theres no students in your courses!";
 	}
 	/*
 	if(!mysql_query($query,$link)){
@@ -200,18 +212,18 @@ if (isset($_POST["ViewStudents"])) {
 	}else{
 		print_r (mysql_fetch_row(mysql_query($query,$link)));
 	}
-	*/
+	
 	//$result = mysql_query($query,$link);
-	print_r (mysqli_fetch_row($result));
+	//print_r (mysqli_fetch_row($result));
 	
 }
+*/
 
-
+include("tableFromLoggedIn.php");
 
 
 
 ?>
-
 
 
 

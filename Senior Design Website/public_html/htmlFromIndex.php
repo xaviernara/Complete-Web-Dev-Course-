@@ -49,6 +49,7 @@
       }
       
       table{
+			color: black;
       	  	text-align: center;
             width:400px;
 			margin-top:150px;
