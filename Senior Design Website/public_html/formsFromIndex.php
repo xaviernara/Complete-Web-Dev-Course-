@@ -1,12 +1,12 @@
     <div class = "container">
     
-      <h1>Snap Attendance</h1>
+      <h1><font color = "black">Snap Attendance</font></h1>
 
-       <div><?php echo $error;?></div>
+       <div id ="errors"><?php echo $error; ?></div>
 
             <form method = "post" id = "signUpForm" >
               
-              <p> Add Instructors Profile to the Database</p>
+              <p> <font color = "black">Add Instructors Profile to the Database</font></p>
               
               <fieldset class="form-group">
 
@@ -47,11 +47,11 @@
   
                <div class ="checkbox">
 
-                 <label>
+                 <label><font color = "black">
 
                       <input class="form-control"  type = "checkbox" name = "stayLoggedIn" value =1> Stay Logged In
 
-                 </label>
+                 </label></font>
 
                </div>
 
@@ -62,13 +62,13 @@
 
                 </fieldset>
               
-				<p><a class="toggleForm"> <u>Log In</u> </a> </p>
+				<p><a class="toggleForm"><font color = "blue"> <u>Log In</u> </a> </font></p>
 
             </form>
 
             <form method = "post" id = "logInForm" >
 
-              <p> Instructors Login</p>
+              <p><font color = "black"> Instructors Login</font></p>
                <fieldset class="form-group">
 
                   <input class="form-control" name="email" type="text" placeholder="Email Address">
@@ -83,11 +83,11 @@
 
                <div class ="checkbox">
 
-                 <label>
+                 <label><font color = "black">
 
                       <input class="form-control"  type = "checkbox" name = "stayLoggedIn" value =1> Stay Logged In
 
-                </label>
+                </label></font>
 
                </div>
 
@@ -95,7 +95,7 @@
 
                 <input class="btn btn-success" type="submit" name ="submit" value = "Log In">
               
-              	<p><a class="toggleForm"> <u>Sign Up</u> </a></p>
+              	<p><a class="toggleForm"><font color = "blue"> <u>Sign Up</u> </font></a></p>
 
             </form>
 

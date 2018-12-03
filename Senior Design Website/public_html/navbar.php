@@ -13,7 +13,7 @@
 .navbar a {
     float: left;
     font-size: 16px;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -22,13 +22,14 @@
 .dropdown {
     float: left;
     overflow: hidden;
+	color: black;
 }
 
 .dropdown .dropbtn {
     font-size: 16px;    
     border: none;
     outline: none;
-    color: white;
+    color: orange;
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
@@ -69,7 +70,7 @@
 <body>
 
 <div class="navbar">
-  <a href="#View_coures">View Coures</a>
+  <a  href="#View_coures">View Coures</a>
   <a href="#Add_Courses">Add Courses</a>
   <a href="#View_Students">View Students</a>
   <a href="#View_Attendance">View Attendance</a>

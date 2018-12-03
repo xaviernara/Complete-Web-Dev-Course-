@@ -49,17 +49,62 @@
 ///////////////////////////////////////////////////////////////////////////
 
 	//refer to Looping_through_data.php in the drive for comments about the if/else statements in more detail
-    if (array_key_exists('email', $_POST) OR array_key_exists('password', $_POST)) {
-       
-      //the file has the mysql db connection code on it and it's included so the database name/password isn't visible 
-       include("mySQLConnection.php");
+    //if (array_key_exists('email', $_POST) OR array_key_exists('password', $_POST)) {
+    if (array_key_exists("submit", $_POST)) {  
+      
+		//the file has the mysql db connection code on it and it's included so the database name/password isn't visible 
+        include("mySQLConnection.php");
         
+		
         if ($_POST['email'] == '') {
+		//if (!$_POST['email']) {
             
-            $error.= "<p>Email address is required.</p>";
+            $error.= "<p>Email address is required.</p>";            
+        } 
+		
+		//The FILTER_VALIDATE_EMAIL filter validates an e-mail address
+		//if the email input doesn't matches the email format then a error is displayed      
+        else if ($_POST['email'] && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) {
+            
+            $error .= "<p>The email address is invalid.</p>";
+          	//echo "<p>The email address is invalid.</p>";
+            
+        }
+		
+		if ($_POST['password']='') {
+		//if (!$_POST['password']) {
+            
+            $error .= "A password is required<br>";
             
         } 
-      
+		
+		if ($_POST['full_name']=''){
+		//if (!$_POST['full_name']){
+			$error.=  "Full name is required.<br>";
+		}
+		
+		if ($_POST['username']='') {	
+		//if (!$_POST['username']) {			
+			$error.=  "Username is required.<br>";
+		}
+		
+		if ($_POST['courseName']=='') {
+		//if (!$_POST['courseName']) {
+			$error.=  "Course Name is required. (e.g. ECE 456)<br>";
+			
+		}
+		
+		if ($_POST['courseID']='') {
+		//if (!$_POST['courseID']) {
+			$error.=  "Course ID is required. (e.g. 456)<br>";
+		}
+		
+		if ($error != "") {
+            
+            $error = "<p>There were error(s) in your form:</p>".$error;
+            
+        }
+      /*
       //The FILTER_VALIDATE_EMAIL filter validates an e-mail address
    	 //if the email input doesn't matches the email format then a error is displayed      
         else if ($_POST['email'] && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) {
@@ -100,20 +145,20 @@
              $error.=  "<p>Course ID is required. (E.g. ECE 456)</p>";
               //echo "<p>Course ID is required. (e.g. ECE 456)</p>";
         } 
-      
+		*/
       
       	else {
             
           if($_POST['signUp']=='1'){
           
-            $query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+            $query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
             
             $result = mysqli_query($link, $query);
             //this if checks the database to test if the email input matches a email in the database and displays a error message
 			//basically if theres more than 1 of the email in the db then theres a error displayed
             if (mysqli_num_rows($result) > 0) {
                 
-                 $error.= "<p>That email address has already been taken.</p>";
+                 $error.= "That email address has already been taken.";
                 
             } 
 			
@@ -159,18 +204,23 @@
                 } else {
                     
                   	//refer to storing_passwords_securely.php in the drive for comments about this line of code about securing passwords 
-                  	$query = "UPDATE `Professors` SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
+                  	//$query = "UPDATE `Professors` SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
                   
+					$id = mysqli_insert_id($link);
+				  
                   	mysqli_query($link,$query);
                   
                   //saving the user who was successfully logged in's id in a session so they wont be forgotten when the page is reloaded
-                  $_SESSION['id'] = mysql_insert_id($link);
+                  //$_SESSION['id'] = mysql_insert_id($link);
+				  
+					$_SESSION['id'] = $id;
                   
                   //checking to see if the user have requested to stay logged in by checking the  "stay logged in" checkbox
                   if($_POST['stayLoggedIn'== '1']){
-                    	setcookie("id",mysqli_insert_id($link),time()+60*60*24*365);
+                    	//setcookie("id",mysqli_insert_id($link),time()+60*60*24*365);
                 	
-                }
+						setcookie("id", $id, time() + 60*60*24*365);
+					}
                   
                
                // echo "sign up successful";
@@ -186,23 +236,27 @@
       else {
       
       	   //print_r($_POST);
-         $query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
-        
+         //$query = "SELECT `id` FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+		$query = "SELECT * FROM `Professors` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+		
          $result = mysqli_query($link,$query);
         
          $row = mysqli_fetch_array($result);
         
         	if(isset($row)){
             	
-              	$hashedPassword = md5(md5(mysql_insert_id($link)).$_POST['password']);
-              
+				//$hashedPassword = md5(md5(mysql_insert_id($link)).$_POST['password']);
+				$hashedPassword = md5(md5($row['id']).$_POST['password']);
+			  
                   if($hashedPassword == $row['password']){
 
                       $_SESSION['id'] = $row['id'];
 
 
                            //checking to see if the user have requested to stay logged in by checking the  "stay logged in" checkbox
-                      if($_POST['stayLoggedIn'== '1']){
+                      //if($_POST['stayLoggedIn'== '1']){
+						if (isset($_POST['stayLoggedIn']) AND $_POST['stayLoggedIn'] == '1') {
+							
                           setcookie("id",$row['id'],time()+60*60*24*365);
 
                   }

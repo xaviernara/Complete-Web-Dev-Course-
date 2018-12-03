@@ -11,10 +11,11 @@ if (array_key_exists("id", $_COOKIE)) {
 if (array_key_exists("id", $_SESSION)) {
 
 
-    echo "<p>Logged In! <a href='index.php?logout=1'>Log Out</a></p>";
+    echo "<p> In! <a href='index.php?logout=1'>Log Out</a></p>";
 } else {
 
-    header("Location: index.php");
+    //header("Location: index.php");
+	header("Location: index2.php");
 }
 
 include("htmlFromIndex.php");
@@ -145,10 +146,10 @@ if (array_key_exists('studentName', $_POST) OR array_key_exists('studentId', $_P
             //$query = "INSERT INTO `StudentsInfo` (`Studentsid`, `fullname`,`instructorClasses`) VALUES 	 ('" . mysqli_real_escape_string($link, $_REQUEST['studentId']) . "','" . mysqli_real_escape_string($link, $_REQUEST['studentName']) . "','" . mysqli_real_escape_string($link, $_REQUEST['instructorClasses']) . "')";
             //$query = "INSERT INTO `StudentsInfo` (`PUID`, `fullname`,) VALUES ('" .mysqli_real_escape_string($link, $_POST['studentId'])."','".mysqli_real_escape_string($link, $_POST['studentName'])."')";
       		//$query = "INSERT INTO `StudentsInfo` (`PUID`, `fullname`) VALUES (`$studentId`,`$studentName`)";
-      		$query = "INSERT INTO `StudentsInfo` (`id`,`fullname`,`PUID`) VALUES (NULL,'".mysqli_real_escape_string($link, $_POST['studentName'])."','".mysqli_real_escape_string($link, $_POST['studentId'])."')";
+      		$query = "INSERT INTO `studentsinfo` (`id`,`fullname`,`PUID`) VALUES (NULL,'".mysqli_real_escape_string($link, $_POST['studentName'])."','".mysqli_real_escape_string($link, $_POST['studentId'])."')";
       
       		//$query = "INSERT INTO `Course` (`courseID`,`courseName`,`professorID`) VALUES(`$courseID`,`$instructorClasses`, ` `)";
-            $query = "INSERT INTO `Course` (`courseID`,`courseName`,`professorID`) VALUES ('".mysqli_real_escape_string($link, $_POST['courseID'])."','".mysqli_real_escape_string($link, $_POST['instructorClasses'])."', '$username')";
+            $query = "INSERT INTO `course` (`courseID`,`courseName`,`professorID`) VALUES ('".mysqli_real_escape_string($link, $_POST['courseID'])."','".mysqli_real_escape_string($link, $_POST['instructorClasses'])."', '$username')";
 			
       	
       
@@ -169,47 +170,48 @@ if (array_key_exists('studentName', $_POST) OR array_key_exists('studentId', $_P
 }
 
 if (isset($_POST["ViewClasses"])) {
-	echo("");
+	
+	//this query select the course name form the db based on the user thats logged in 
+	$query = "SELECT `courseName` FROM `course` WHERE `professorID` = `$username` ";
+	$result = mysqli_query($link, $query);
+	print_r (mysqli_fetch_row($result));
+	
 }
+
+if (isset($_POST["ViewStudents"])) {
+	//query selects the students full name, puid, date they attended, and their attendance for those days  
+	//based on if puid in both the attedance_lessons and studentsinfo match
+	
+	$query = "SELECT DISTINCT studentsinfo.fullName,studentsinfo.PUID, attendance_lessons.date, attendance_lessons.attendance FROM studentsinfo INNER JOIN attendance_lessons on studentsinfo.PUID = attendance_lessons.PUID";
+	$result = mysqli_query($link, $query);
+	
+	if (mysqli_num_rows($result)>0){
+		
+		while ($row = mysqli_fetch_row($result)){
+			echo "<font color ="black"> Name: " .$row["fullName"]. "PUID: " .$row["PUID"]. "Date" . $row["date"] . "Attendance: " . $row["attendance"]. "</font> <br>"
+			
+		}
+		
+	}
+	/*
+	if(!mysql_query($query,$link)){
+		 echo("<p>Error description: </p>" . mysqli_error($link));
+         echo("<p>Error Number: </p>". mysql_errno($link));	
+	}else{
+		print_r (mysql_fetch_row(mysql_query($query,$link)));
+	}
+	*/
+	//$result = mysql_query($query,$link);
+	print_r (mysqli_fetch_row($result));
+	
+}
+
+
+
+
+
 ?>
 
-
-<!DOCTYPE html>
-          <html>
-          <body>
-              <table>
-                <tr>
-                  <th> Student </th>
-                  <th> PUID </th>
-                  <th> Course </th>
-                  <th> Attendance Date </th>
-                </tr>
-                <?php
-                	include("htmlFromIndex.php");
-                    $link = mysqli_connect("shareddb-h.hosting.stackcp.net", "userName-343365c7", "KatekyoReborn19", "userName-343365c7"); 
-                    if (mysqli_connect_error()) {
-
-                            die ("There was an error connecting to the database".mysqli_connect_error());
-
-                    } 
-                    
-                    //$incorrectQuery = "SELECT fullname FROM StudentsInfo WHERE PUID IN(SELECT PUID FROM attednace_lessons WHERE PUID = PUID) ";
-                    //$query = "SELECT * attednace_lessons FROM attednace_lessons JOIN StudentsInfo ON PUID = PUID WHERE PUID = PUID LIMIT 1";
-                    $query = "SELECT DISTINCT fullName, PUID, date, attendance from attednace_lessons, StudentsInfo WHERE attendance_lessons.PUID = StudentsInfo.PUID";
-                    //attednace_lessons WHERE StudentsInfo ON PUID = PUID WHERE PUID = PUID LIMIT 1";
-
-                    $result = $link->query($query);
-
-                    if($result->num_rows >0){
-                        while($row = $result -> fetch_assoc()){
-                            echo ("<tr><td>".$row["PUID"]. "</td><td>". $row["fullname"]."</td><td>"."</td></tr>");
-                        }
-                    }
-                ?>
-
-              </table>
-            </body>
-            </html>
 
 
 

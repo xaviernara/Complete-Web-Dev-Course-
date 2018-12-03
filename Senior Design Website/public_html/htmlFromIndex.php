@@ -27,6 +27,13 @@
             -o-background-size: cover;
             background-size: cover;
   	    }
+		
+		body {
+              
+              background: none;
+              color: #FFF;
+              
+          }
       
       
       
@@ -46,6 +53,11 @@
             width:400px;
 			margin-top:150px;
       }
+	  
+	  #errors{
+		  
+		  color: black;
+	  }
       
       </style>
     

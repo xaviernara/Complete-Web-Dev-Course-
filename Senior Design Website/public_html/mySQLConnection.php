@@ -12,7 +12,7 @@
 	*/
 	//its common that username and database name are the same
 
-  $link = mysqli_connect("shareddb-h.hosting.stackcp.net", "userName-343365c7", "KatekyoReborn19", "userName-343365c7");
+  $link = mysqli_connect("localhost", "root", "", "userName-343365c7");
 
 			
               if (mysqli_connect_error()) {
