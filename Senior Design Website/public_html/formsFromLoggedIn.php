@@ -1,5 +1,7 @@
 
 <form method = "post" id = "studentAddForm" >
+
+		
               
               <p><font color="black"> Add Students Profile & Classes to the Database</font></p>
               
@@ -35,29 +37,30 @@
 
               </fieldset>
   
-  			              <fieldset class="form-group">
+  			              <!--<fieldset class="form-group">
 				<!--	<input type="hidden" name="viewClasses" value="1">
-				-->
+				
                     <input class="btn btn-success" type="submit" name ="ViewClasses" value = "View Classes">
-
+					-->
               </fieldset>
 			  
 			   </fieldset>
   
-  			              <fieldset class="form-group">
-				<!--	<input type="hidden" name="viewClasses" value="1">
-				-->
-                    <input class="btn btn-success" type="submit" name ="ViewStudents" value = "View Students">
+  			             <fieldset class="form-group">
+					<input type="hidden" name="viewClasses" value="1">
+				
+                  <input class="btn btn-success" type="submit" name ="ViewStudents" value = "View Students">
 
               </fieldset>
 			  
 			  </fieldset>
   
-  			              <fieldset class="form-group">
-				<!--	<input type="hidden" name="viewClasses" value="1">
-				-->
-                    <input class="btn btn-success" type="submit" name ="ViewStudents" value = "View Attendance">
+  
+  			              <!--<fieldset class="form-group">
+						<input type="hidden" name="viewClasses" value="1">
+				
+                    <input class="btn btn-success" type="submit" name ="ViewAttendance" value = "View Attendance">
 
-              </fieldset>
+             </fieldset> -->
   
             </form>

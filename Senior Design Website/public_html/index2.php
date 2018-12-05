@@ -204,7 +204,7 @@
                 } else {
                     
                   	//refer to storing_passwords_securely.php in the drive for comments about this line of code about securing passwords 
-                  	//$query = "UPDATE `Professors` SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
+                  	$query = "UPDATE `Professors` SET password = '".md5(md5(mysqli_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
                   
 					$id = mysqli_insert_id($link);
 				  
@@ -216,7 +216,7 @@
 					$_SESSION['id'] = $id;
                   
                   //checking to see if the user have requested to stay logged in by checking the  "stay logged in" checkbox
-                  if($_POST['stayLoggedIn'== '1']){
+					if($_POST['stayLoggedIn'== '1']){
                     	//setcookie("id",mysqli_insert_id($link),time()+60*60*24*365);
                 	
 						setcookie("id", $id, time() + 60*60*24*365);
@@ -259,8 +259,8 @@
 							
                           setcookie("id",$row['id'],time()+60*60*24*365);
 
-                  }
-                  header("Location: loggedInPage.php");
+						}
+					header("Location: loggedInPage.php");
                   
                   
            		 }else{

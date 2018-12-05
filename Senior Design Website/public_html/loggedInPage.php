@@ -11,7 +11,7 @@ if (array_key_exists("id", $_COOKIE)) {
 if (array_key_exists("id", $_SESSION)) {
 
 
-    echo "<p> In! <a href='index.php?logout=1'>Log Out</a></p>";
+    echo "<p> In! <a href='index2.php?logout=1'>Log Out</a></p>";
 } else {
 
     //header("Location: index.php");
@@ -22,7 +22,7 @@ include("htmlFromIndex.php");
 
 include("javascriptFromIndex.php");
 
-include("navbar.php");
+//include("navbar.php");
 ?>
 
 
@@ -172,17 +172,28 @@ if (array_key_exists('studentName', $_POST) OR array_key_exists('studentId', $_P
 if (isset($_POST["ViewClasses"])) {
 	
 	//this query select the course name form the db based on the user thats logged in 
-	$query = "SELECT `courseName` FROM `course` WHERE `professorID` = `$username` ";
+	$query = "SELECT `courseName` FROM `course` WHERE `professorID` = `$_POST[username]` ";
 	$result = mysqli_query($link, $query);
-	print_r (mysqli_fetch_row($result));
+	
+	if (mysqli_num_rows($result)> 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			echo $row["courseName"];
+			
+		}
+		
+		
+	}
+	
+	//print_r (mysqli_fetch_row($result));
 	
 }
-/*
+
 if (isset($_POST["ViewStudents"])) {
 	//query selects the students full name, puid, date they attended, and their attendance for those days  
 	//based on if puid in both the attedance_lessons and studentsinfo match
 	
-	$query = "SELECT DISTINCT studentsinfo.fullName,studentsinfo.PUID, attendance_lessons.date, attendance_lessons.attendance FROM studentsinfo INNER JOIN attendance_lessons on studentsinfo.PUID = attendance_lessons.PUID";
+	//$query = "SELECT DISTINCT studentsinfo.fullName,studentsinfo.PUID, attendance_lessons.date, attendance_lessons.attendance FROM studentsinfo INNER JOIN attendance_lessons on studentsinfo.PUID = attendance_lessons.PUID";
+	$query = "SELECT DISTINCT studentsinfo.fullName,studentsinfo.PUID, attendance_lessons.date, attendance_lessons.attendance, attendance_lessons.courseID FROM studentsinfo INNER JOIN attendance_lessons on studentsinfo.PUID = attendance_lessons.PUID";
 	$result = mysqli_query($link, $query);
 	
 	if (mysqli_num_rows($result)> 0){
@@ -192,9 +203,11 @@ if (isset($_POST["ViewStudents"])) {
 			$sql_PUID = $row["PUID"];
 			$sql_date = $row["date"];
 			$sql_attendance =$row["attendance"];
+			$sql_courseID = $row["courseID"];
 			
 			echo "<td><font color ='black'> Name: ".$sql_fullname."</font> <br></td>";
 			echo "<td><font color ='black'> PUID: ".$sql_PUID."</font> <br></td>";
+			echo "<td><font color ='black'> Course ID: ".$sql_courseID."</font> <br></td>";
 			echo "<td><font color ='black'> Date: ".$sql_date."</font> <br></td>";
 			echo "<td><font color ='black'> Attendance: ".$sql_attendance."</font> <br><td>";
 			
@@ -215,12 +228,11 @@ if (isset($_POST["ViewStudents"])) {
 	
 	//$result = mysql_query($query,$link);
 	//print_r (mysqli_fetch_row($result));
-	
+	*/
 }
-*/
 
-include("tableFromLoggedIn.php");
 
+//include("tableFromLoggedIn.php");
 
 
 ?>

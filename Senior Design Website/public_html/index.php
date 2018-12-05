@@ -138,7 +138,7 @@
                     
                    $error = "<p>There was a problem signing you up - please try again later.</p>";
                    echo("<p>Error description: </p>" . mysqli_error($link));
-              	   echo("<p>Error Number: </p>". mysql_errno($link));
+              	   echo("<p>Error Number: </p>". mysqli_errno($link));
                   
                   
                   //$_SESSION['email'] = $_POST['email'];
@@ -159,7 +159,7 @@
                 } else {
                     
                   	//refer to storing_passwords_securely.php in the drive for comments about this line of code about securing passwords 
-                  	$query = "UPDATE `Professors` SET password = '".md5(md5(mysql_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
+                  	$query = "UPDATE `Professors` SET password = '".md5(md5(mysqli_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
                   
                   	mysqli_query($link,$query);
                   
@@ -194,7 +194,7 @@
         
         	if(isset($row)){
             	
-              	$hashedPassword = md5(md5(mysql_insert_id($link)).$_POST['password']);
+              	$hashedPassword = md5(md5(mysqli_insert_id($link)).$_POST['password']);
               
                   if($hashedPassword == $row['password']){
 

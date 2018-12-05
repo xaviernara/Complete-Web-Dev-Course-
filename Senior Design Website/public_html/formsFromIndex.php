@@ -28,7 +28,7 @@
               
                <fieldset class="form-group">
 
-                   <input class="form-control" name="username" type="text" placeholder="Username">
+                   <input class="form-control" formaction="loggedInPage.php" name="username" type="text" placeholder="Username">
 
                </fieldset>
               

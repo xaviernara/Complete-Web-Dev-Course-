@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
           <html>
           <body>
@@ -6,10 +5,10 @@
                 <tr>
                   <th> Student </th>
                   <th> PUID </th>
+				  <th> Course ID</th>
                   <th> Date </th>
                   <th> Attendance </th>
                 </tr>
-				<tbody>
                 <?php
                 	include("htmlFromIndex.php");
 					include("mySQLConnection.php");
@@ -37,13 +36,11 @@
 							//output data of each row
 							while ($row = mysqli_fetch_assoc($result)){
 							?>	
-					
-	
-								
 								<tr>
 								
 								<td><font color ='black'><?php $row["fullName"] ?> </font> <br></td>
 								<td><font color ='black'><?php $row["PUID"] ?> </font> <br></td>
+								<td><font color ='black'><?php $row["courseID"] ?> </font> <br></td>
 								<td><font color ='black'><?php $row["date"] ?> </font> <br></td>
 								<td><font color ='black'><?php $row["attendance"] ?> </font> <br></td>
 								
@@ -69,7 +66,6 @@
                     }
 					*/
                 ?>
-				</tbody>
               </table>
             </body>
             </html>
