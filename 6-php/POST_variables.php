@@ -46,7 +46,7 @@ Variables have no length limit
 ?>
 
 
-//this creates a input form for the user to input a name and
+//this creates a input form for the user to input a name 
 <form method="post">
 
     <p>What is your name?</p>
